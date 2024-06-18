@@ -13,9 +13,15 @@ create table departments (
 	last_updated timestamp default localtimestamp not null
 );
 
+create table titles(
+	title_id char(5) not null primary key,
+	title varchar(20),
+	last_updated timestamp default localtimestamp not null
+);
+
 create table employees(
 	emp_no int not null primary key,
-	emp_title char(5) not null,
+	emp_title char(5) not null references titles (title_id),
 	birth_date varchar(10),
 	first_name varchar(20) not null,
 	last_name varchar(20) not null,
@@ -38,8 +44,6 @@ create table dept_manager(
 	primary key (dept_no, emp_no)
 );
 
-
-
 create table salaries(
 	emp_no int not null references employees (emp_no),
 	salary int not null,
@@ -47,15 +51,9 @@ create table salaries(
 	primary key (emp_no, salary)
 );
 
-create table titles(
-	title_id char(5) not null,
-	title varchar(20),
-	last_updated timestamp default localtimestamp not null,
-	primary key (title_id, title)
-);
-
 -- Data Analysis
 -- 1. List the employee number, last name, first name, sex, and salary of each employee
+
 
 -- 2. List the first name, last name, and hire date for the employees who were hired in 1986
 

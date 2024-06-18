@@ -1,0 +1,40 @@
+departments
+--
+dept_no char(4) PK
+dept_name varchar(20)
+last_updated timestamp
+
+employees
+--
+emp_no int PK
+emp_title char(5) FK >- titles.title_id
+birth_date varchar(10)
+first_name varchar(20)
+last_name varchar(20)
+sex char(1)
+hire_date varchar(10)
+last_updated timestamp
+
+dept_employees
+--
+emp_no int PK FK >- employees.emp_no
+dept_no char(4) PK FK >- departments.dept_no
+last_updated timestamp
+
+dept_manager
+--
+dept_no char(4) PK FK >- departments.dept_no
+emp_no int PK FK >- employees.emp_no
+last_updated timestamp
+
+salaries
+--
+emp_no int PK FK >- employees.emp_no
+salary int PK
+last_updated timestamp
+
+titles
+--
+title_id char(5) PK
+title varchar(20)
+last_updated timestamp
