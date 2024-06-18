@@ -9,38 +9,49 @@ drop table if exists titles cascade;
 -- Create tables
 create table departments (
 	dept_no char(4) not null primary key,
-	dept_name varchar(20) not null
-);
-
-create table dept_employees(
-	emp_no int not null primary key,
-	dept_no char(4) not null references departments (dept_no)
-);
-
-create table dept_manager(
-	dept_no char(4) not null references departments (dept_no),
-	emp_no int not null references dept_employees (emp_no)
-	-- this one might need a composite key
+	dept_name varchar(20) not null,
+	last_updated timestamp default localtimestamp not null
 );
 
 create table employees(
-	emp_no int not null primary key references dept_employees (emp_no),
+	emp_no int not null primary key,
 	emp_title char(5) not null,
 	birth_date varchar(10),
 	first_name varchar(20) not null,
 	last_name varchar(20) not null,
 	sex char(1) not null,
-	hire_date varchar(10)
+	hire_date varchar(10),
+	last_updated timestamp default localtimestamp not null
 );
 
+create table dept_employees(
+	emp_no int not null references employees (emp_no),
+	dept_no char(4) not null references departments (dept_no),
+	last_updated timestamp default localtimestamp not null,
+	primary key(emp_no, dept_no)
+);
+
+create table dept_manager(
+	dept_no char(4) not null references departments (dept_no),
+	emp_no int not null references employees (emp_no),
+	last_updated timestamp default localtimestamp not null,
+	primary key (dept_no, emp_no)
+);
+
+
+
 create table salaries(
-	emp_no int not null primary key references dept_employees (emp_no),
-	salary int not null
+	emp_no int not null references employees (emp_no),
+	salary int not null,
+	last_updated timestamp default localtimestamp not null,
+	primary key (emp_no, salary)
 );
 
 create table titles(
-	title_id char(5) not null primary key, -- references employees(emp_title),
-	title varchar(20)
+	title_id char(5) not null,
+	title varchar(20),
+	last_updated timestamp default localtimestamp not null,
+	primary key (title_id, title)
 );
 
 -- Data Analysis
