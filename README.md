@@ -1,2 +1,4 @@
 # ds_module_9_sql
 SQL Homework
+
+For this homework assignment, I used QuickDBD and PostgreSQL to generate an ERD for 6 provided CSVs to show the relationships between the tables (including declaring the primary key and foreign key constraints of each table). In PostgreSQL, I created all tables with primary keys, foreign keys, and composite keys, where appropriate. I then imported all of the CSVs into the previously created tables. Once the table swere imported, I was able to answer a variety of different questions by querying into the tables, joining tables where needed, doing aggregation functions, and filtering the tables (including using wildcards).
