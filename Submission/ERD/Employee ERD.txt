@@ -8,11 +8,11 @@ employees
 --
 emp_no int PK
 emp_title char(5) FK >- titles.title_id
-birth_date varchar(10)
+birth_date date
 first_name varchar(20)
 last_name varchar(20)
 sex char(1)
-hire_date varchar(10)
+hire_date date
 last_updated timestamp
 
 dept_employees
