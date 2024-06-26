@@ -4,6 +4,12 @@ dept_no char(4) PK
 dept_name varchar(20)
 last_updated timestamp
 
+titles
+--
+title_id char(5) PK
+title varchar(20)
+last_updated timestamp
+
 employees
 --
 emp_no int PK
@@ -31,10 +37,4 @@ salaries
 --
 emp_no int PK FK >- employees.emp_no
 salary int PK
-last_updated timestamp
-
-titles
---
-title_id char(5) PK
-title varchar(20)
 last_updated timestamp
