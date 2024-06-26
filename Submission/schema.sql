@@ -22,11 +22,11 @@ create table titles(
 create table employees(
 	emp_no int not null primary key,
 	emp_title char(5) not null references titles (title_id),
-	birth_date varchar(10),
+	birth_date date,
 	first_name varchar(20) not null,
 	last_name varchar(20) not null,
 	sex char(1) not null,
-	hire_date varchar(10),
+	hire_date date,
 	last_updated timestamp default localtimestamp not null
 );
 
